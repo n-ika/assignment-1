@@ -1,0 +1,18 @@
+---
+title: "Assignment 1"
+author: "Nika Jurov"
+date: "9/19/2018"
+output: html_document
+---
+
+## Exercice 1
+
+This is an *exercice* to get to know `R`, **GitHub**, [statistics](http://www.linguist.univ-paris-diderot.fr/~edunbar/stats_m2_2018/).
+
+## Exercice 2
+
+## Exercice 3
+
+## Exercice 4
+
+## Exercice 5
