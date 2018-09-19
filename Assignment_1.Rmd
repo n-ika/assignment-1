@@ -7,9 +7,69 @@ output: html_document
 
 ## Exercice 1
 
-This is an *exercice* to get to know `R`, **GitHub**, [statistics](http://www.linguist.univ-paris-diderot.fr/~edunbar/stats_m2_2018/).
+This is an *exercice* to get to know `R`, **GitHub**, [statistics](https://qph.fs.quoracdn.net/main-qimg-47274a86533c4c56d52a8e7e5151495c).
 
 ## Exercice 2
+
+### The code
+
+```{r}
+# Statement 1 
+possible_outcomes <- c(0, 1, 2, 3, 4, 5)
+# Statement 2
+outcome_probabilities <- c(0.1, 0.5, 0.2, 0.1, 0.05, 0.05)
+# Statement 3
+n_data_points <- 400
+# Statement 4
+set.seed(1)
+# Statement 5
+fake_data_points <- sample(possible_outcomes,
+                           n_data_points,
+                           replace=T,
+                           prob=outcome_probabilities)
+# Statement 6
+set.seed(NULL)
+# Statement 7
+fake_data_set <- tibble::data_frame(`Fake measurement`=fake_data_points)
+
+```
+
+### The statements
+
+#### Statement 1
+A vector of 5 values is assigned to a variable `possible_outcomes`.
+
+#### Statement 2
+A vector of 5 values is assigned to a variable `possible_probabilities`. This variable is very likely to store probability values of the outcomes/results stored in the variable above (assumption is made according to the name of the variable). The sum of these numbers is 1 which is the total probability of something (the probabilities can take values from 0 to 1) - which means that the probability 1 signifies that the result is certain. We do not know which outcome takes which probability for now. These two variables are separated. We do have any link between them for now.
+
+#### Statement 3
+A unique value *400* is assigned to a variable `n_data_points`. The variable probably stores the number of data points (assumption is made according to the name of the variable). This is exactly the same process as above, just that the value now is not a vector but an integer.
+
+#### Statement 4
+`set.seed()` is a random generator in R and here it is used to specify the seed defined as 1. I found the description of this function by typing `?set.seed` into the console. By googling to understand further how this function works, I found [this description](https://rpubs.com/Mentors_Ubiqum/Set_Seed) that I've found useful:
+
+* the computer cannot actually create random numbers, but it has a list of them
+* we can fix the starting point of this list, so that the "random" number will always be the same - we thus assure the same outcome every time
+* this can be useful when we want random numbers but want them always to be identical
+
+#### Statement 5
+A function `sample()` is assigned to a variable called `fake_data_points`. Judging from the name of this variable, I assume this will generate a bunch of fake data points. Since the `?sample()` typed in console reveals that this function takes a sample from the elements of the data we provide (here, this is `possible_outcomes`). The sample consists of the specified size - here we are giving it a size of 400 which is written as a variable `n_data_points`. `replace=T` means that sampling is with replacement. Googling what this means I found out that it means that one element can be sampled more than once. Since we are dealing with a variable `possible_outcomes` that is assigned to a vector with five values, we can sample those values as many times we like/need to. `prob=outcome_probabilities` - here the argument `prob` is equal to `outcome_probabilities` that we assigned previously to a vector of five probabilities. So now we have the probability values for obtaining the elements of the vector being sampled which is the vector `possible_outcomes`. This means that the first value of this vector will have the first probability value of the probability vector.
+
+#### Statement 6
+In `set.seed()` the seed has been now set to `NULL`, which means none.
+
+#### Statement 7 
+
+A variable called `fake_data_set` is assigned to a function `tibble::data_frame()`. This function has one argument (a set of name-value pairs) that is assigned: `fake_data_points` and it names it *Fake measurement*. As we have seen above, `fake_data_points` is a set of random 400 numbers (but they are all part of `possible_outcomes` vector) with probabilities assigned with the vector called `outcome_probabilities`. So now as we can see in the help section, `data_frame()` is an alias to `tibble()` which is a simplified version of `data.frame()` that builds a dataframe. A dataframe in R is the same thing as in python (I [googled](http://www.r-tutor.com/r-introduction/data-frame) to check) - a data set stored in a table. When we have this table, now I expect it to display the data set represented by `fake_data_points`. We can see those by typing `fake_data_points` in the console. Since we have assigned all to the same name *Fake measurement* they all appear in the same column titled with this name. The value in each row is the number from the vector `possible_outcomes` that appear in frequence they were assigned by the probability vector `outcome_probabilities`. We can see this simply by typing `View(fake_data_set)` in the console.
+
+We can also observe the frequency of appearance of each number in the histogram represented below.
+
+
+```{r}
+ggplot2::ggplot(fake_data_set, ggplot2::aes(x=`Fake measurement`)) +
+  ggplot2::geom_histogram(bins=5, colour="black", fill="lightgrey")
+```
+
 
 ## Exercice 3
 
