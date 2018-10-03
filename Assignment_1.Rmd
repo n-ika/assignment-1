@@ -10,7 +10,7 @@ output: html_document
 
 ## Exercice 1
 
-This is an *exercice* to get to know `R`, **GitHub**, [statistics](https://qph.fs.quoracdn.net/main-qimg-47274a86533c4c56d52a8e7e5151495c).
+This is an *exercice* to get to know `R`, **GitHub** and the importance of [statistics](https://www.youtube.com/watch?v=-WQqNcJtvnM).
 
 
 
@@ -146,7 +146,7 @@ print(p)
 
 
 
-###5a
+### 5a
 
 ```{r}
 difference_in_medians(iris, "Sepal.Width", "Species", "versicolor", "virginica")
@@ -155,7 +155,7 @@ difference_in_medians(iris, "Sepal.Width", "Species", "virginica", "virginica")
 
 
 
-###5b
+### 5b
 
 ```{r}
 iris$Sepal.Width[1:10]
@@ -170,7 +170,7 @@ set.seed(previous_seed)
 
 
 
-###5c
+### 5c
 
 ```{r}
 if(!exists(".Random.seed")) set.seed(NULL)
@@ -193,13 +193,13 @@ print(ptest_3[["observed"]])
 
 
 
-###5d
+### 5d
 
 Yes, it matters. `var` is the column on which the statistical test is performed and is numeric. `grouping_var` is not numeric, in particular here it provides a column with names of species of the *iris*. It is therefore a string upon which we will not perform quantitive statistic tests.
 
 
 
-###5e
+### 5e
 
 ```{r, cache=T}
 if(!exists(".Random.seed")) set.seed(NULL)
